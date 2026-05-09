@@ -22,7 +22,6 @@ The application is:
 
 # Technologies Used
 
-- React
 - Docker
 - Amazon ECR
 - Amazon EKS
