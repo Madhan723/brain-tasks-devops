@@ -6,8 +6,15 @@ env:
     ACCOUNT_ID: 495599769710
     IMAGE_REPO_NAME: brain-tasks-app
     IMAGE_TAG: latest
+    CLUSTER_NAME: brain-tasks-cluster
 
 phases:
+  install:
+    commands:
+      - curl -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.27.0/2023-07-05/bin/linux/amd64/kubectl
+      - chmod +x kubectl
+      - mv kubectl /usr/local/bin/
+
   pre_build:
     commands:
       - echo Logging into ECR
@@ -22,10 +29,16 @@ phases:
 
   post_build:
     commands:
-      - echo Pushing Docker image
+      - echo Push image
       - docker push $REPO_URI:$IMAGE_TAG
+
+      - echo Configure kubectl
+      - aws eks update-kubeconfig --name $CLUSTER_NAME --region $AWS_DEFAULT_REGION
+
+      - echo Deploy to EKS
+      - kubectl apply -f deployment.yaml
+      - kubectl apply -f service.yaml
 
 artifacts:
   files:
-    - deployment.yaml
-    - service.yaml
+    - '**/*'
