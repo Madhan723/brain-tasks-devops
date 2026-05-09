@@ -1,91 +1,52 @@
-DevOps Practice Project – Dist Directory
+# Brain Tasks App - DevOps Deployment
 
-This repository contains the production-ready build files (dist folder) for DevOps practice and deployment exercises.
+## Project Overview
 
-It is intentionally structured to help learners focus on CI/CD pipelines, hosting, containerization, and infrastructure setup rather than application development.
+This project demonstrates the deployment of the Brain Tasks React application using a complete DevOps CI/CD workflow on AWS.
 
-📁 What This Repository Contains
+The application is:
+- Dockerized using Docker
+- Stored in Amazon ECR
+- Deployed on Amazon EKS
+- Automated using AWS CodePipeline and CodeBuild
 
-dist/ – Compiled and production-ready static files
+---
 
-HTML
+# Application Details
 
-CSS
+- Application: Brain Tasks React App
+- Source Repository: https://github.com/Vennilavanguvi/Brain-Tasks-App
+- Deployment Repository: https://github.com/Madhan723/brain-tasks-devops
 
-JavaScript
+---
 
-Assets (images, fonts, etc.)
+# Technologies Used
 
-These files are ready to deploy to:
+- React
+- Docker
+- Amazon ECR
+- Amazon EKS
+- AWS CodeBuild
+- AWS CodePipeline
+- Kubernetes
+- NGINX
+- GitHub
 
-Web servers (Nginx / Apache)
+---
 
-Cloud platforms (AWS S3, Azure Blob, GCP Storage)
+# Project Architecture
 
-Containerized environments (Docker + Nginx)
+```text
+GitHub
+   ↓
+CodePipeline
+   ↓
+CodeBuild
+   ↓
+Docker Build
+   ↓
+Push Image to Amazon ECR
+   ↓
+Deploy to Amazon EKS using kubectl
 
-Kubernetes clusters
 
-CI/CD pipeline demonstrations
-
-🎯 Purpose of This Repository
-
-This repository is designed for:
-
-DevOps beginners
-
-CI/CD practice
-
-Deployment pipeline testing
-
-Docker & Kubernetes deployment exercises
-
-Web server configuration practice
-
-Reverse proxy and load balancer setup
-
-The goal is to simulate real-world deployment scenarios using already built application files.
-
-❓ Why is there NO package.json?
-
-You may notice that this repository does not include:
-
-package.json
-
-node_modules
-
-Source code (src/)
-
-Build tools configuration
-
-✅ Reason:
-
-This repository only contains the final production build output (dist), not the development source code.
-
-In a typical project:
-
-Developers write source code.
-
-The project is built using tools like:
-
-Node.js
-
-Webpack
-
-Vite
-
-React (or other frameworks)
-
-A dist/ folder is generated.
-
-Only the production build is deployed to servers.
-
-This repository represents step 4 only.
-
-Since this is already the compiled output:
-
-No dependencies are required
-
-No build process is required
-
-No package.json is needed
